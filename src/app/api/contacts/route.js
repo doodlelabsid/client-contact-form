@@ -2,7 +2,7 @@ export async function POST(request) {
     const { name, email, phone, message } = await request.json();
 
     try {
-        const response = await fetch(`${process.env.API_URL}/contact`, {
+        const response = await fetch(`${process.env.API_URL}/contacts`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
