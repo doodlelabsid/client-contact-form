@@ -1,0 +1,19 @@
+services:
+  client-contact-form:
+    build: .
+    image: client-contact-form:1.0.0
+    container_name: client-contact-form
+    restart: on-failure
+    ports:
+      - "3000:3000"
+    environment:
+      - API_URL=http://host.docker.internal:8080
+    networks:
+      - contact-form-net-client
+    # extra_hosts only for Linux env. Windows and MacOS don't need this so comment line 17 and 18.
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  contact-form-net-client:
+    driver: bridge
